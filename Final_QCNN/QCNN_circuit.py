@@ -58,7 +58,7 @@ def QCNN_structure(U, params, U_params):
     param7 = params[4 * U_params + 6: 4 * U_params + 8]
 
     conv_layer0(U, param0)
-    pooling_layer0(U, param4)
+    pooling_layer0(unitary.Pooling_ansatz1, param4)
 
     conv_layer1(U, param1)
     pooling_layer1(unitary.Pooling_ansatz1, param5)
