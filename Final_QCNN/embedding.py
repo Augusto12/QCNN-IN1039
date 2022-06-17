@@ -7,7 +7,7 @@ import numpy as np
 from Angular_hybrid import Angular_Hybrid_4, Angular_Hybrid_2
 def data_embedding(X, embedding_type='Amplitude'):
     if embedding_type == 'Amplitude':
-        AmplitudeEmbedding(X, wires=range(8), normalize=True)
+        AmplitudeEmbedding(X, wires=range(16), normalize=True)
     elif embedding_type == 'Angle':
         AngleEmbedding(X, wires=range(8), rotation='Y')
     elif embedding_type == 'Angle-compact':

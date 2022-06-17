@@ -43,7 +43,7 @@ batch_size = 25
 
 def circuit_training(X_train, Y_train, U, U_params, embedding_type, circuit, cost_fn):
     if circuit == 'QCNN':
-        total_params = U_params * 3 + 2 * 3
+        total_params = U_params * 4 + 2 * 4
     elif circuit == 'Hierarchical':
         total_params = U_params * 7
 

@@ -5,12 +5,21 @@ import unitary
 import embedding
 
 # Convolutional layers
+def conv_layer0(U, params):
+    U(params, wires=[0, 15])
+    for i in range(0, 16, 2):
+        U(params, wires=[i, i + 1])
+    for i in range(1, 15, 2):
+        U(params, wires=[i, i + 1])                
 def conv_layer1(U, params):
-    U(params, wires=[0, 7])
-    for i in range(0, 8, 2):
-        U(params, wires=[i, i + 1])
-    for i in range(1, 7, 2):
-        U(params, wires=[i, i + 1])
+    U(params, wires=[0, 14])
+    U(params, wires=[0, 2])
+    U(params, wires=[2, 4])
+    U(params, wires=[4, 6])
+    U(params, wires=[6, 8])
+    U(params, wires=[8, 10])
+    U(params, wires=[10, 12])
+    U(params, wires=[12, 14])    
 def conv_layer2(U, params):
     U(params, wires=[0, 6])
     U(params, wires=[0, 2])
@@ -20,9 +29,14 @@ def conv_layer3(U, params):
     U(params, wires=[0,4])
 
 # Pooling layers
-def pooling_layer1(V, params):
-    for i in range(0, 8, 2):
+def pooling_layer0(V, params):
+    for i in range(0, 16, 2):
         V(params, wires=[i + 1, i])
+def pooling_layer1(V, params):
+    V(params, wires=[2,0])
+    V(params, wires=[6,4])
+    V(params, wires=[10,8])
+    V(params, wires=[14,12])
 def pooling_layer2(V, params):
     V(params, wires=[2,0])
     V(params, wires=[6,4])
@@ -33,23 +47,27 @@ def pooling_layer3(V, params):
 
 def QCNN_structure(U, params, U_params):
 
-    param1 = params[0:U_params]
-    param2 = params[U_params: 2 * U_params]
-    param3 = params[2 * U_params: 3 * U_params]
+    param0 = params[0:U_params]
+    param1 = params[U_params: 2 * U_params]
+    param2 = params[2 * U_params: 3 * U_params]
+    param3 = params[3 * U_params: 4 * U_params]
 
-    param4 = params[3 * U_params: 3 * U_params + 2]
-    param5 = params[3 * U_params + 2: 3 * U_params + 4]
-    param6 = params[3 * U_params + 4: 3 * U_params + 6]
+    param4 = params[4 * U_params: 4 * U_params + 2]
+    param5 = params[4 * U_params + 2: 4 * U_params + 4]
+    param6 = params[4 * U_params + 4: 4 * U_params + 6]
+    param7 = params[4 * U_params + 6: 4 * U_params + 8]
 
+    conv_layer0(U, param0)
+    pooling_layer0(U, param4)
 
     conv_layer1(U, param1)
-    pooling_layer1(unitary.Pooling_ansatz1, param4)
+    pooling_layer1(unitary.Pooling_ansatz1, param5)
 
     conv_layer2(U, param2)
-    pooling_layer2(unitary.Pooling_ansatz1, param5)
+    pooling_layer2(unitary.Pooling_ansatz1, param6)
 
     conv_layer3(U, param3)
-    pooling_layer3(unitary.Pooling_ansatz1, param6)
+    pooling_layer3(unitary.Pooling_ansatz1, param7)
 
 
 def QCNN_structure_without_pooling(U, params, U_params):

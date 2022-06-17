@@ -57,9 +57,9 @@ def data_load_and_process(dataset, classes=[0, 1], feature_reduction='resize256'
             Y_train = [1 if y == classes[0] else -1 for y in Y_train]
             Y_test = [1 if y == classes[0] else -1 for y in Y_test]
 
-    if feature_reduction == 'resize256':
-        X_train = tf.image.resize(X_train[:], (256, 1)).numpy()
-        X_test = tf.image.resize(X_test[:], (256, 1)).numpy()
+    if feature_reduction == 'resize65536':
+        X_train = tf.image.resize(X_train[:], (65536, 1)).numpy()
+        X_test = tf.image.resize(X_test[:], (65536, 1)).numpy()
         X_train, X_test = tf.squeeze(X_train).numpy(), tf.squeeze(X_test).numpy()
         return X_train, X_test, Y_train, Y_test
 

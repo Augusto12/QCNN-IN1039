@@ -34,7 +34,7 @@ def accuracy_test(predictions, labels, cost_fn, binary = True):
 
 def Encoding_to_Embedding(Encoding):
     # Amplitude Embedding / Angle Embedding
-    if Encoding == 'resize256':
+    if Encoding == 'resize65536':
         Embedding = 'Amplitude'
     elif Encoding == 'pca8':
         Embedding = 'Angle'
