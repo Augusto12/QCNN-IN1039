@@ -11,8 +11,8 @@ import Benchmarking
 # circuit = 'QCNN', 'Hierarchical'
 #########
 
-Unitaries = ['U_SU4']
-U_num_params = [15]
+Unitaries = [['U_5', 'U_TTN']]
+U_num_params = [[15,2]]
 Encodings = ['pca32-3', 'autoencoder32-3']
 dataset = 'fashion_mnist'
 classes = [0,1]

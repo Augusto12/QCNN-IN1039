@@ -104,3 +104,9 @@ def Pooling_ansatz2(wires): #0 params
 
 def Pooling_ansatz3(*params, wires): #3 params
     qml.CRot(*params, wires=[wires[0], wires[1]])
+
+def Conv_Ansatze_Selector(U_name):
+    if U_name == 'U_5':
+        return U_5
+    elif U_name == 'U_TTN':
+        return U_TTN
