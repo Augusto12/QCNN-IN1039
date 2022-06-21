@@ -42,7 +42,7 @@ def U_9(params, wires):  # 2 params
     qml.RX(params[1], wires=wires[1])
 
 
-def U_13(params, wires):  # 6 params
+def U_13(params, wires):  # 6 params - Convolutional circuit 4
     qml.RY(params[0], wires=wires[0])
     qml.RY(params[1], wires=wires[1])
     qml.CRZ(params[2], wires=[wires[1], wires[0]])
@@ -60,7 +60,7 @@ def U_14(params, wires):  # 6 params
     qml.CRX(params[5], wires=[wires[0], wires[1]])
 
 
-def U_15(params, wires):  # 4 params
+def U_15(params, wires):  # 4 params - Convolutional circuit 3
     qml.RY(params[0], wires=wires[0])
     qml.RY(params[1], wires=wires[1])
     qml.CNOT(wires=[wires[1], wires[0]])
@@ -110,3 +110,7 @@ def Conv_Ansatze_Selector(U_name):
         return U_5
     elif U_name == 'U_TTN':
         return U_TTN
+    elif U_name == 'U_13':
+        return U_13
+    elif U_name == 'U_15':
+        return U_15
