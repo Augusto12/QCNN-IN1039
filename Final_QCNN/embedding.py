@@ -8,9 +8,9 @@ from Angular_hybrid import Angular_Hybrid_4, Angular_Hybrid_2
 def data_embedding(X, embedding_type='Amplitude'):
     if embedding_type == 'Amplitude':
         AmplitudeEmbedding(X, wires=range(8), normalize=True)
-    elif embedding_type == 'Angle':
+    elif embedding_type == 'Angle': # Qubit
         AngleEmbedding(X, wires=range(8), rotation='Y')
-    elif embedding_type == 'Angle-compact':
+    elif embedding_type == 'Angle-compact': # Dense
         AngleEmbedding(X[:8], wires=range(8), rotation='X')
         AngleEmbedding(X[8:16], wires=range(8), rotation='Y')
 
